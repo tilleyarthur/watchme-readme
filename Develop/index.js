@@ -1,14 +1,33 @@
-// TODO: Include packages needed for this application
+const fs = require('fs').promises;
+const generateMarkdown = require('./utils/generateMarkdown.js');
+const promptUser = require('./utils/prompt.js');
 
-// TODO: Create an array of questions for user input
-const questions = [];
+// use async/await to write the readme file
+writeToFile = async (fileName, fileText) => {
+  try {
+    await fs.writeFile(fileName, fileText);
+    console.log();
+  } catch (err) {
+    console.log(err);
+  }
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+}
 
-// TODO: Create a function to initialize app
-function init() {}
+init = () => {
+  
 
-// Function call to initialize app
+
+  
+  userPrompts()
+    .then(data => {
+      
+      let fileText = generateMarkdown(data);
+      
+      writeToFile('./dist/README.md', fileText);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 init();
-

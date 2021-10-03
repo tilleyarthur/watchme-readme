@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const emailValidator = require('email-validator');
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -17,13 +18,13 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'description',
-      message: 'Please provide a description of your project (required)',
       validate: descrInput => {
-        if (!descrInput) {
-          console.log('You need a description for your project.');
-          return false;
-        }
-        return true;
+        message: 'Please provide a description of your project (required)',
+          if (!descrInput) {
+            console.log('You need a description for your project.');
+            }else{  return false;
+          }
+          return true;
       }
     },
     {
@@ -42,9 +43,10 @@ const promptUser = () => {
       message: 'If any, list collaborators, external assets, or tutorials here',
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'license',
-      message: 'Provide your license',
+      message: 'Choose your license',
+      choices: ['MIT', 'GNU', 'Apache', 'Mozilla', 'Boost', 'Unilicense', 'None'],
     },
     {
       type: 'input',
@@ -72,7 +74,20 @@ const promptUser = () => {
         }
         return true;
       },
-    }
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter your email address (required)',
+      validate: userEmail => {
+        if (emailValidator.validate(userEmail)) {
+          return true;
+        } else {
+          console.log('You need to enter a valid email address.');
+          return false;
+        }
+      },
+    },
   ])
 }
 
