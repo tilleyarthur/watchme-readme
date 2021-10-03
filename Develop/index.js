@@ -18,7 +18,7 @@ init = () => {
 
 
   
-  userPrompts()
+  promptUser ()
     .then(data => {
       
       let fileText = generateMarkdown(data);
@@ -31,3 +31,5 @@ init = () => {
 }
 
 init();
+
+module.exports.promptUser = promptUser;

@@ -31,8 +31,8 @@ ${renderTestSection(data.test)}
 ## License
 ${renderLicenseSection(data.license)}
 ## Questions
-You can find my GitHub profile [here](https://www.github.com/${data.github}).
-Kindly reach out for any questions or pleasantries at <${data.email}>!
+Github page [here](https://www.github.com/${data.github}).
+Contact with questions or comments <${data.email}>!
 `;
   }
 

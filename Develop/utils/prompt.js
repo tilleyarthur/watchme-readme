@@ -18,13 +18,13 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'description',
+      message: 'Please provide a description of your project (required)',
       validate: descrInput => {
-        message: 'Please provide a description of your project (required)',
-          if (!descrInput) {
-            console.log('You need a description for your project.');
-            }else{  return false;
-          }
-          return true;
+        if (!descrInput) {
+          console.log('You need a description for your project.');
+          return false;
+        }
+        return true;
       }
     },
     {
