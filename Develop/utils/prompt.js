@@ -78,18 +78,20 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'email',
-      message: 'Enter your email address (required)',
+      message: 'Enter your email address (required): ',
       validate: userEmail => {
         if (emailValidator.validate(userEmail)) {
           return true;
         } else {
-          console.log('You need to enter a valid email address.');
+          console.log('You need to enter a valid email address format.');
           return false;
         }
       },
     },
   ])
 }
+
+module.exports = promptUser;
 
       
 
